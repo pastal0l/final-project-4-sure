@@ -1056,7 +1056,9 @@ class GuessingGame extends JFrame implements ActionListener {
  
  
  
- 
+ private void stopTimer() {
+    gameTimer.stop();
+}
  
     private void newRound() {
         if (roundCount >= 5) {
@@ -1094,10 +1096,12 @@ class GuessingGame extends JFrame implements ActionListener {
         if (userChoice.equals(computerChoice)) {
             JOptionPane.showMessageDialog(this, "You guessed the same as the computer! You lose!", "You Lose!", JOptionPane.ERROR_MESSAGE);
             this.dispose();
+            stopTimer();
             gameSelectionFrame.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Correct! You guessed a different option.", "Good Job!", JOptionPane.INFORMATION_MESSAGE);
             newRound();
+            stopTimer();
         }
     }
  
